@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HG-V end effector in action</title>
+<style>
+  body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;background:#f4f6f8;color:#1d2733}
+  header{background:#1b8a8f;color:#fff;padding:20px 16px 18px;text-align:center}
+  h1{margin:0;font-size:1.5rem}
+  header p{margin:6px 0 0;font-size:.95rem;opacity:.9}
+  main{max-width:760px;margin:0 auto;padding:16px;display:grid;gap:18px}
+  figure{margin:0;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.12)}
+  video{display:block;width:100%;height:auto;background:#000}
+  figcaption{padding:10px 14px;font-size:1rem}
+  figcaption b{color:var(--c)}
+  .m3d{display:block;text-align:center;background:#0F1B26;color:#fff;text-decoration:none;border-radius:10px;padding:16px 14px;font-size:1.1rem;font-weight:600;box-shadow:0 1px 4px rgba(0,0,0,.12)}
+  .m3d span{display:block;font-size:.85rem;font-weight:400;opacity:.8;margin-top:4px}
+  footer{text-align:center;font-size:.85rem;color:#5b6773;padding:6px 16px 24px}
+</style>
+</head>
+<body>
+<header>
+  <h1>HG-V end effector in action</h1>
+  <p>One tool, two grip modes: gripper and vacuum · clips at 6x speed</p>
+</header>
+<main>
+  <a class="m3d" href="model.html">Open the 3D model &rarr;<span>Rotate it 360°, try the gripper, vacuum and switch modes with the test objects</span></a>
+  <figure style="--c:#2f6fb3"><video src="1_gripper_sponge_loop.mp4" autoplay muted loop playsinline preload="auto"></video><figcaption><b>Gripper</b> · sponge - loop</figcaption></figure>
+  <figure style="--c:#2f6fb3"><video src="2_gripper_al_loop.mp4" autoplay muted loop playsinline preload="metadata"></video><figcaption><b>Gripper</b> · aluminium part, repeated loop</figcaption></figure>
+  <figure style="--c:#1b8a8f"><video src="3_vacuum_box.mp4" autoplay muted loop playsinline preload="metadata"></video><figcaption><b>Vacuum</b> · box</figcaption></figure>
+  <figure style="--c:#1b8a8f"><video src="4_vacuum_iron.mp4" autoplay muted loop playsinline preload="metadata"></video><figcaption><b>Vacuum</b> · iron block</figcaption></figure>
+  <figure style="--c:#bf4520"><video src="5_auto_switch.mp4" autoplay muted loop playsinline preload="metadata"></video><figcaption><b>Auto switch</b> · gripper A-B-A, then vacuum A-B-A, about 1 s per switch</figcaption></figure>
+</main>
+<footer>Final Year Project · Bachelor of Mechatronic Engineering with Honours</footer>
+</body>
+</html>
