@@ -35,7 +35,6 @@ button.md[data-m=sw].on{background:#7B5CD6;border-color:#7B5CD6;color:#fff}
 @media (max-width:1100px){.key{font-size:11.5px;padding:6px 10px;bottom:80px;right:10px}}
 
 #objbtn{position:fixed;left:16px;top:16px;font-size:13px;padding:7px 14px;z-index:2}#objbtn.on{background:#FF8A3D;color:#0F1B26;border-color:#FF8A3D}.objs{display:none}.objs.show{display:block}
-@media (max-width:760px){.objs.show{display:flex}}
 .lbl{display:none;position:fixed;inset:0;pointer-events:none;overflow:hidden}.lbl span{position:absolute;transform:translate(-50%,-50%);font-weight:700;font-size:20px;padding:2px 10px;border-radius:8px;background:rgba(15,27,38,.8)}.lbl .g{color:#FF8A3D}.lbl .v{color:#3CC8EA}
 #admbtn{position:fixed;right:16px;top:16px;font-size:13px;padding:7px 14px}#admbtn.on{background:#FF8A3D;color:#0F1B26;border-color:#FF8A3D}
 .adm{display:none;position:fixed;right:16px;top:58px;bottom:16px;width:300px;overflow-y:auto;background:rgba(15,27,38,.94);border:1px solid #2C4254;border-radius:14px;padding:12px 14px;font-size:13px}.adm.show{display:block}
@@ -43,14 +42,22 @@ button.md[data-m=sw].on{background:#7B5CD6;border-color:#7B5CD6;color:#fff}
 .adm select{display:block;width:100%;margin-top:3px;background:#1B2C3A;color:#EEF3F6;border:1px solid #3A5163;border-radius:8px;padding:5px;font-size:13px}.adm textarea{width:100%;box-sizing:border-box;height:60px;margin:6px 0;background:#0B141C;color:#C8D3DB;border:1px solid #3A5163;border-radius:8px;font-size:11px}
 .adm .abtn{display:flex;gap:6px;margin-top:10px}.adm button{font-size:12.5px;padding:6px 11px}.small{color:#93A6B5;font-size:12px;margin:4px 0}.st b.wn{color:#FFC861;font-size:13px}
 .adm.show~.key{display:none}
+#portb{display:none}
 @media (max-width:760px){
- .objs{top:auto;bottom:118px;left:8px;right:8px;width:auto;transform:none;overflow-x:auto;gap:4px;padding:6px}
- .key{top:auto;bottom:178px;left:8px;right:8px;max-width:none;font-size:11px;line-height:1.55}
- .top{padding-top:56px}.bar{bottom:10px}.bar .sep{display:none}button{padding:8px 13px;font-size:14px}button.md{min-width:84px}
- .objs h2{display:none}.ob{flex:none;width:auto;margin:0}.ob small{display:none}
- .st{bottom:112px;white-space:normal;width:88vw}
+ /* phone: model gets the screen, panels open on top and close again */
+ .top{padding:12px 64px 0}.top h1{font-size:19px}.sub{display:none}
+ #objbtn,#admbtn,.back{top:10px;font-size:12.5px;padding:7px 11px}
+ .objs.show{position:fixed;inset:0;transform:none;width:auto;display:grid;grid-template-columns:1fr 1fr;align-content:start;gap:8px;overflow-y:auto;z-index:5;background:rgba(15,27,38,.97);border:0;border-radius:0;padding:58px 12px 24px}
+ .objs h2{grid-column:1/-1;font-size:14px;margin:0 2px 4px}.ob{margin:0;padding:10px;border:1px solid #2C4254;align-items:flex-start}.ob small{display:block}
+ #objbtn{z-index:6}
+ .key{display:none;top:76px;bottom:auto;left:8px;right:8px;max-width:none;font-size:12px;line-height:1.6;z-index:4}.key.show{display:block}
+ .bar{bottom:8px;display:grid;grid-template-columns:repeat(12,1fr);gap:6px;width:94vw}.bar button{grid-column:span 3}.bar .md{grid-column:span 4}.bar .sep{display:none}
+ button{padding:9px 6px;font-size:13.5px}button.md{min-width:0}#portb{display:block}
+ .st{bottom:104px;white-space:normal;width:92vw;font-size:13.5px;padding:6px 10px}.st b{font-size:14.5px}
+ .adm{left:8px;right:8px;width:auto;top:52px;bottom:8px;z-index:6}
 }
-#objbtn{left:16px}.back{position:fixed;right:16px;top:16px;font-size:13px;padding:7px 14px;border:1px solid #3A5163;border-radius:22px;color:#EEF3F6;background:#1B2C3A;text-decoration:none;z-index:2}
+.back{position:fixed;right:16px;top:16px;font-size:13px;padding:7px 14px;border:1px solid #3A5163;border-radius:22px;color:#EEF3F6;background:#1B2C3A;text-decoration:none;z-index:2}
+@media (max-width:760px){.back{top:10px;right:10px;font-size:12.5px;padding:7px 11px}}
 </style>
 </head>
 <body>
@@ -61,7 +68,7 @@ button.md[data-m=sw].on{background:#7B5CD6;border-color:#7B5CD6;color:#fff}
 <div class="objs" id="objs"><h2>Test objects: pick one, then press Gripper or Vacuum</h2></div>
 <div id="lbl" class="lbl"><span id="lb_A" class="g">A</span><span id="lb_Ap" class="g">A′</span><span id="lb_B" class="v">B</span><span id="lb_Bp" class="v">B′</span></div>
 <div class="st" id="st">Pick a mode below</div>
-<div class="bar"><button class="md" data-m="grip">Gripper</button><button class="md" data-m="vac">Vacuum</button><button class="md" data-m="sw">Switch</button><span class="sep"></span><button id="spd">Speed 1×</button><button id="spin">Pause spin</button><button id="reset">Reset view</button></div>
+<div class="bar"><button class="md" data-m="grip">Gripper</button><button class="md" data-m="vac">Vacuum</button><button class="md" data-m="sw">Switch</button><span class="sep"></span><button id="portb">Ports</button><button id="spd">Speed 1×</button><button id="spin">Pause spin</button><button id="reset">Reset view</button></div>
 <button id="admbtn" style="display:none">Admin</button><a class="back" href="index.html">&larr; Videos</a><div class="adm" id="adm"></div>
 <div class="key"><b>Connections</b><div><i style="background:#33C7ED"></i>Vacuum air · <b>DO_6</b> (valve 2 → ejector)</div><div><i style="background:#5BD68A"></i>Cylinder air, spring return · <b>DO_5</b> (valve 1)</div><div><i style="background:#FF6B1F"></i>Gripper motor cable · LECP6, parallel I/O</div></div>
 <script>
@@ -274,7 +281,7 @@ function camStep(dt){if(!tgt)return;var k=1-Math.exp(-dt/450);
   cam.yaw+=(tgt.yaw-cam.yaw)*k;cam.pitch+=(tgt.pitch-cam.pitch)*k;cam.dist+=(tgt.dist-cam.dist)*k;
   for(var i=0;i<3;i++)cam.C[i]+=(tgt.C[i]-cam.C[i])*k;}
 
-function pick(i){var o=OBJ[i];
+function pick(i){var o=OBJ[i];if(window.matchMedia('(max-width:760px)').matches&&objsEl.classList.contains('show'))objBtn.onclick();
   if(OB===o){OB.btn.classList.remove('on');OB=null;go(MODE||'idle');if(!MODE)msg('Pick a mode below');adminFill();return;}
   if(OB)OB.btn.classList.remove('on');OB=o;o.btn.classList.add('on');mt=0;
   if(MODE==='sw'){MODE=null;setBtns();}
@@ -332,7 +339,8 @@ function draw(){
   if(cv.width!==w||cv.height!==h){cv.width=w;cv.height=h;}
   gl.viewport(0,0,w,h);gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);gl.enable(gl.DEPTH_TEST);
   var C=cam.C,e=[C[0]+cam.dist*Math.cos(cam.pitch)*Math.sin(cam.yaw),C[1]+cam.dist*Math.sin(cam.pitch),C[2]+cam.dist*Math.cos(cam.pitch)*Math.cos(cam.yaw)];
-  var M4=mul(persp(0.62,w/h,R0*0.08,R0*12),look(e,C));
+  var asp=w/h,fov=asp<1.05?2*Math.atan(Math.tan(0.31)*0.95/asp):0.62;
+  var M4=mul(persp(fov,asp,R0*0.08,R0*12),look(e,C));
   gl.uniformMatrix4fv(U.mvp,false,new Float32Array(M4));gl.uniform3fv(U.eye,e);
   var list=[];
   var F0=(76-SET.open)/2;G.forEach(function(g){var o=g.t==='fl'?[TX,TY,FZ+F0+TZ]:g.t==='fr'?[TX,TY,-FZ-F0+TZ]:g.t==='vac'?[TX,TY-VY,TZ]:g.t==='spr'?[TX,TY-VY+SP-(SET.cupL||0),TZ]:[TX,TY,TZ];
@@ -348,8 +356,9 @@ function draw(){
   list.sort(function(a,b){return b[0].a-a[0].a;}).forEach(function(x){drawOne(x[0],x[1],x[2],x[3],x[4],x[5]);});
   gl.depthMask(true);}
 var LBL=document.getElementById('lbl'),SPD=1;
+document.getElementById('portb').onclick=function(){var on=document.querySelector('.key').classList.toggle('show');this.classList.toggle('on2',on);};
 document.getElementById('spd').onclick=function(){SPD=SPD>=3?1:SPD+1;this.textContent='Speed '+SPD+'×';};
-var objBtn=document.getElementById('objbtn');objBtn.onclick=function(){var on=objsEl.classList.toggle('show');objBtn.classList.toggle('on',on);objBtn.textContent=on?'Test objects ◂':'Test objects ▸';};
+var objBtn=document.getElementById('objbtn');objBtn.onclick=function(){var on=objsEl.classList.toggle('show');objBtn.classList.toggle('on',on);objBtn.textContent=on?(window.matchMedia('(max-width:760px)').matches?'✕ Close':'Test objects ◂'):'Test objects ▸';};
 var spin=true,spinBtn=document.getElementById('spin'),lastUser=-1e9,t0=performance.now();
 function loop(t){var dt=Math.min(t-t0,50);t0=t;anim(dt*SPD);camStep(dt);if(spin&&!drag&&t-lastUser>2500)cam.yaw+=dt*0.00045;draw();requestAnimationFrame(loop);}
 var drag=false,px=0,py=0,pts={},pinch=0;
@@ -364,7 +373,7 @@ cv.addEventListener('wheel',function(e){e.preventDefault();zoom(Math.exp(e.delta
 spinBtn.onclick=function(){spin=!spin;this.textContent=spin?'Pause spin':'Auto spin';if(spin)tgt=null;};
 document.getElementById('reset').onclick=function(){go(MODE||'idle');};
 if(location.hash==='#shot'){spin=false;var q=new URLSearchParams(location.search);
-  if(q.get('o'))pick(+q.get('o'));if(q.get('adm'))admBtn.onclick();if(q.get('m')){MODE=q.get('m');setBtns();go(MODE);}
+  if(q.get('o'))pick(+q.get('o'));if(q.get('objs'))objBtn.onclick();if(q.get('ports'))document.getElementById('portb').onclick();if(q.get('adm'))admBtn.onclick();if(q.get('m')){MODE=q.get('m');setBtns();go(MODE);}
   if(tgt){cam.yaw=tgt.yaw;cam.pitch=tgt.pitch;cam.dist=tgt.dist;cam.C=tgt.C.slice();}
   if(q.get('yaw'))cam.yaw=+q.get('yaw');
   if(q.get('t')){var FIX=+q.get('t');anim=(function(f){return function(){mt=FIX;f(0);};})(anim);}}
